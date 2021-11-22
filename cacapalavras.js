@@ -5,11 +5,15 @@ console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
 
 const palavrasSelecionadas = [];
-for(i=0; i<3; i++){
+for (i = 0; i < 3; i++) {
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
-    if(palavra.includes(palavrasSelecionadas)){
-        palavrasSelecionadas.push(palavra)
+    palavrasSelecionadas.push(palavra)
+
+    if (palavrasSelecionadas[i] !== palavrasSelecionadas[i + 1] || palavrasSelecionadas[i] !== palavrasSelecionadas[i + 2]) {
+        palavrasSelecionadas
     }
+
+
 }
 
 console.log(palavrasSelecionadas)
@@ -20,10 +24,10 @@ const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 //gerador da matriz de letras
-for(i=0; i<10; i++){
+for (i = 0; i < 10; i++) {
     tabuleiro[i] = [];
-    for(j=0; j<10; j++){
-        tabuleiro[i][j] = (letras.charAt(Math.floor(Math.random() * letras.length)));  
+    for (j = 0; j < 10; j++) {
+        tabuleiro[i][j] = (letras.charAt(Math.floor(Math.random() * letras.length)));
     }
 }
 console.table(tabuleiro);
