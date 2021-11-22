@@ -1,5 +1,5 @@
 const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
-const tabuleiro = [];
+let tabuleiro = [];
 
 console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
@@ -7,13 +7,10 @@ console.log(palavras[Math.floor(Math.random() * palavras.length)])
 const palavrasSelecionadas = [];
 for (i = 0; i < 3; i++) {
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
-    palavrasSelecionadas.push(palavra)
-
-    if (palavrasSelecionadas[i] !== palavrasSelecionadas[i + 1] || palavrasSelecionadas[i] !== palavrasSelecionadas[i + 2]) {
-        palavrasSelecionadas
+    if(!palavrasSelecionadas.includes(palavra)){
+        palavrasSelecionadas.push(palavra)
     }
-
-
+    else i--
 }
 
 console.log(palavrasSelecionadas)
@@ -31,6 +28,26 @@ for (i = 0; i < 10; i++) {
     }
 }
 console.table(tabuleiro);
+
+let teste = []
+
+function incluirPalavras(){
+    palavrasSelecionadas[0]
+    let intervalo = 10 - palavrasSelecionadas[0].length
+    let palavraRecortada = palavrasSelecionadas[0].split('')
+    console.log(palavraRecortada)
+
+    let indiceInicial = (Math.floor(Math.random() * intervalo))
+    console.log(indiceInicial)
+
+    for(i = 0; i < palavraRecortada.length; i++){
+        tabuleiro[indiceInicial][i] = palavraRecortada[i]
+    }
+    console.log(tabuleiro)
+}
+incluirPalavras()
+
+
 
 
 
