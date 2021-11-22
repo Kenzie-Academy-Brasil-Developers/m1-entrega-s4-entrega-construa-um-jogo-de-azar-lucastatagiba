@@ -1,7 +1,6 @@
 const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
 let tabuleiro = [];
-
-console.log(palavras[Math.floor(Math.random() * palavras.length)])
+// console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
 
 const palavrasSelecionadas = [];
@@ -12,7 +11,6 @@ for(i=0; i<3; i++){
     }
     else i--
 }
-
 console.log(palavrasSelecionadas)
 
 
@@ -37,18 +35,17 @@ function incluirPalavras(){
     let palavraRecortada = palavrasSelecionadas[0].split('')
     console.log(palavraRecortada)
 
-    let indiceInicial = (Math.floor(Math.random() * intervalo))
+    let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
     console.log(indiceInicial)
+    let indiceOrtogonal = (Math.floor(Math.random() * 10))
 
     for(i = 0; i < palavraRecortada.length; i++){
-        tabuleiro[indiceInicial][i] = palavraRecortada[i]
+        tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
     }
-    console.log(tabuleiro)
+    console.table(tabuleiro)
 }
+
 incluirPalavras()
-
-
-
 
 
 // pega palavra aleatŕoio no índice - RANDOM
@@ -57,3 +54,6 @@ incluirPalavras()
 
 // verificar o length da palavra para para gerar um random - length da palavra para definir a posição da primeira letra da palavra
 // push em cada palavra em sequência vertical ou horizontal de acordo com o sentido
+
+
+// DOMINIO A PARTIR DAQUI
