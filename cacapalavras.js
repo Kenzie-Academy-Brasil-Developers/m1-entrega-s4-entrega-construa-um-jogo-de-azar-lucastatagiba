@@ -4,7 +4,7 @@ let tabuleiro = [];
 
 
 const palavrasSelecionadas = [];
-for(i=0; i<3; i++){
+for(i = 0; i < 3; i++){
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
     if(!palavrasSelecionadas.includes(palavra)){
         palavrasSelecionadas.push(palavra)
@@ -19,28 +19,32 @@ const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 //gerador da matriz de letras
-for(i=0; i<10; i++){
+for(i = 0; i < 10; i++){
     tabuleiro[i] = [];
-    for(j=0; j<10; j++){
+    for(j = 0; j < 10; j++){
         tabuleiro[i][j] = (letras.charAt(Math.floor(Math.random() * letras.length)));  
     }
 }
-console.table(tabuleiro);
+// console.table(tabuleiro);
 
 let teste = []
 
+// função para adicionar palavra em posição aleatória - funcional - apenas 1 palavra. Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
 function incluirPalavras(){
-    palavrasSelecionadas[0]
     let intervalo = 10 - palavrasSelecionadas[0].length
     let palavraRecortada = palavrasSelecionadas[0].split('')
     console.log(palavraRecortada)
 
     let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
-    console.log(indiceInicial)
     let indiceOrtogonal = (Math.floor(Math.random() * 10))
+    let direcional = Math.floor(Math.random()*2)
 
-    for(i = 0; i < palavraRecortada.length; i++){
-        tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
+    if(direcional === 1){
+        for(i = 0; i < palavraRecortada.length; i++){
+            tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
+        }
+    } else for(i = 0; i < palavraRecortada.length; i++){
+        tabuleiro[indiceOrtogonal][indiceInicial+i] = palavraRecortada[i]
     }
     console.table(tabuleiro)
 }
