@@ -4,14 +4,14 @@ let tabuleiro = [];
 
 
 const palavrasSelecionadas = [];
-for(i = 0; i < 3; i++){
+
+for (i = 0; i < 3; i++) {
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
-    if(!palavrasSelecionadas.includes(palavra)){
+    if (!palavrasSelecionadas.includes(palavra)) {
         palavrasSelecionadas.push(palavra)
     }
     else i--
 }
-console.log(palavrasSelecionadas)
 
 
 //gerador de letra aleatório
@@ -19,6 +19,7 @@ const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 //gerador da matriz de letras
+
 for(i = 0; i < 10; i++){
     tabuleiro[i] = [];
     for(j = 0; j < 10; j++){
@@ -31,9 +32,9 @@ let teste = []
 
 // função para adicionar palavra em posição aleatória - funcional - apenas 1 palavra. Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
 function incluirPalavras(){
+
     let intervalo = 10 - palavrasSelecionadas[0].length
     let palavraRecortada = palavrasSelecionadas[0].split('')
-    console.log(palavraRecortada)
 
     let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
     let indiceOrtogonal = (Math.floor(Math.random() * 10))
@@ -45,11 +46,14 @@ function incluirPalavras(){
         }
     } else for(i = 0; i < palavraRecortada.length; i++){
         tabuleiro[indiceOrtogonal][indiceInicial+i] = palavraRecortada[i]
+
     }
     console.table(tabuleiro)
+
 }
 
 incluirPalavras()
+
 
 
 // pega palavra aleatŕoio no índice - RANDOM
@@ -61,3 +65,58 @@ incluirPalavras()
 
 
 // DOMINIO A PARTIR DAQUI
+
+let main = document.getElementById('main')
+let grade = document.createElement('table')
+main.appendChild(grade)
+
+for (let i = 0; i < 10; i++) {
+    let coluna = document.createElement('tr')
+    grade.appendChild(coluna)
+    for (let j = 0; j < 10; j++) {
+        let linha = document.createElement('td')
+        linha.innerText = (letras.charAt(Math.floor(Math.random() * letras.length)));
+        coluna.appendChild(linha)
+    }
+}
+
+let colunas = document.getElementsByTagName('tr')
+let linhas = document.getElementsByTagName('td')
+
+function incluirPalavrasPeloDOM() {
+
+    for (let i = 0; i < palavrasSelecionadas.length; i++) {
+
+        let palavrasACacar = document.createElement('li')
+        palavrasACacar.innerText = palavrasSelecionadas[i]
+        main.appendChild(palavrasACacar)
+
+        let intervalo = 10 - palavrasSelecionadas[i].length
+        let palavraRecortada = palavrasSelecionadas[i]
+
+        let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
+        let indiceOrtogonal = (Math.floor(Math.random() * 10))
+        let direcional = Math.floor(Math.random() * 2)
+
+
+        if (direcional === 1) {
+            for (j = 0; j < palavraRecortada.length; j++) {
+                grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
+            }
+        }else for (j = 0; j < palavraRecortada.length; j++) {
+            grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
+        }
+
+    }
+}
+
+incluirPalavrasPeloDOM()
+
+let tituloACacar = document.createElement('h3')
+tituloACacar.innerText = 'Palavras:'
+main.appendChild(tituloACacar)
+
+
+
+
+
