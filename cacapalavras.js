@@ -115,8 +115,3 @@ incluirPalavrasPeloDOM()
 let tituloACacar = document.createElement('h3')
 tituloACacar.innerText = 'Palavras:'
 main.appendChild(tituloACacar)
-
-
-
-
-
