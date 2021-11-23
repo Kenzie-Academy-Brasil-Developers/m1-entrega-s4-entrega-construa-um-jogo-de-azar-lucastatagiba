@@ -12,7 +12,7 @@ for (i = 0; i < 3; i++) {
     }
     else i--
 }
-
+console.log(palavrasSelecionadas)
 
 //gerador de letra aleatório
 const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
@@ -23,18 +23,31 @@ let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 for(i = 0; i < 10; i++){
     tabuleiro[i] = [];
     for(j = 0; j < 10; j++){
-        tabuleiro[i][j] = (letras.charAt(Math.floor(Math.random() * letras.length)));  
+        tabuleiro[i][j] = []
+        //= (letras.charAt(Math.floor(Math.random() * letras.length)));  
+        // comentario a cima preenche com letras aleatorias
     }
 }
+
+for(let i = 0; i < 3; i++){
+    if(tabuleiro[i] == []){
+        incluirPalavras()
+    }
+}
+
+
+
+
 // console.table(tabuleiro);
 
 let teste = []
 
 // função para adicionar palavra em posição aleatória - funcional - apenas 1 palavra. Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
 function incluirPalavras(){
+    for(let j = 0 ; j < palavrasSelecionadas.length; j++){
 
-    let intervalo = 10 - palavrasSelecionadas[0].length
-    let palavraRecortada = palavrasSelecionadas[0].split('')
+    let intervalo = 10 - palavrasSelecionadas[j].length
+    let palavraRecortada = palavrasSelecionadas[j].split('')
 
     let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
     let indiceOrtogonal = (Math.floor(Math.random() * 10))
@@ -49,7 +62,7 @@ function incluirPalavras(){
 
     }
     console.table(tabuleiro)
-
+    }
 }
 
 incluirPalavras()
