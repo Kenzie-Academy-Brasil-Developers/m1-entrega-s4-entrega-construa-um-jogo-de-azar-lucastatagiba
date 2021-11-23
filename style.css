@@ -1,0 +1,50 @@
+body{
+    width: 100vw;
+    
+}
+main{
+    width: 100vw;
+    display: flex;
+    flex-direction: column-reverse;
+}
+h2{
+    width: 100%;
+    text-align: center;
+    margin: 50px auto;
+    font-size: 50px;
+    
+}
+table{
+    width: 100%;
+    text-align: center;    
+    margin: 100px auto;  
+    border: 1px solid black; 
+    
+}
+td{    
+    padding: 2%;
+    margin-top: 10px;
+    
+}
+h3{    
+    width: 100%;
+    margin: 0 auto 20px; 
+    text-align: center;    
+    font-size: 30px;
+}
+li{
+    
+    width: 115px;
+    margin: 0 auto;            
+    font-size: 20px; 
+}
+
+@media screen and (min-width: 500px){
+    table{
+        width: 500px;
+        text-align: center;    
+        margin: 100px auto;  
+        border: 1px solid blue;     
+    } 
+}
+
