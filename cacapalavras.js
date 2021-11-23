@@ -1,5 +1,14 @@
 const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
 let tabuleiro = [];
+let coordenadasClick = [];
+let coordenadasPalavrasSelecionadas = [];
+let colunas = document.getElementsByTagName('tr')
+let linhas = document.getElementsByTagName('td')
+let palavra1 = []
+let palavra2 = []
+let palavra3 = []
+
+
 // console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
 
@@ -10,9 +19,11 @@ for (i = 0; i < 3; i++) {
     if (!palavrasSelecionadas.includes(palavra)) {
         palavrasSelecionadas.push(palavra)
     }
-    else i--
+    else {
+        i--
+    }
 }
-
+console.log(palavrasSelecionadas)
 
 //gerador de letra aleatório
 const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
@@ -20,36 +31,52 @@ let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 //gerador da matriz de letras
 
-for(i = 0; i < 10; i++){
+for (i = 0; i < 10; i++) {
     tabuleiro[i] = [];
-    for(j = 0; j < 10; j++){
-        tabuleiro[i][j] = (letras.charAt(Math.floor(Math.random() * letras.length)));  
+    for (j = 0; j < 10; j++) {
+        tabuleiro[i][j] = []
+        //= (letras.charAt(Math.floor(Math.random() * letras.length)));  
+        // comentario a cima preenche com letras aleatorias
     }
 }
+
+for (let i = 0; i < 3; i++) {
+    if (tabuleiro[i] == []) {
+        incluirPalavras()
+    }
+}
+
+
+
+
 // console.table(tabuleiro);
+
+
+
 
 let teste = []
 
 // função para adicionar palavra em posição aleatória - funcional - apenas 1 palavra. Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
-function incluirPalavras(){
+function incluirPalavras() {
+    for (let j = 0; j < palavrasSelecionadas.length; j++) {
 
-    let intervalo = 10 - palavrasSelecionadas[0].length
-    let palavraRecortada = palavrasSelecionadas[0].split('')
+        let intervalo = 10 - palavrasSelecionadas[j].length
+        let palavraRecortada = palavrasSelecionadas[j].split('')
 
-    let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
-    let indiceOrtogonal = (Math.floor(Math.random() * 10))
-    let direcional = Math.floor(Math.random()*2)
+        let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
+        let indiceOrtogonal = (Math.floor(Math.random() * 10))
+        let direcional = Math.floor(Math.random() * 2)
 
-    if(direcional === 1){
-        for(i = 0; i < palavraRecortada.length; i++){
-            tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
+        if (direcional === 1) {
+            for (i = 0; i < palavraRecortada.length; i++) {
+                tabuleiro[indiceInicial + i][indiceOrtogonal] = palavraRecortada[i]
+            }
+        } else for (i = 0; i < palavraRecortada.length; i++) {
+            tabuleiro[indiceOrtogonal][indiceInicial + i] = palavraRecortada[i]
+
         }
-    } else for(i = 0; i < palavraRecortada.length; i++){
-        tabuleiro[indiceOrtogonal][indiceInicial+i] = palavraRecortada[i]
-
+        console.table(tabuleiro)
     }
-    console.table(tabuleiro)
-
 }
 
 incluirPalavras()
@@ -72,16 +99,16 @@ main.appendChild(grade)
 
 for (let i = 0; i < 10; i++) {
     let coluna = document.createElement('tr')
-    grade.appendChild(coluna)
+    grade.appendChild(coluna);
     for (let j = 0; j < 10; j++) {
         let linha = document.createElement('td')
+        linha.id = `${i}${j}`;
         linha.innerText = (letras.charAt(Math.floor(Math.random() * letras.length)));
-        coluna.appendChild(linha)
+        coluna.appendChild(linha);
     }
 }
 
-let colunas = document.getElementsByTagName('tr')
-let linhas = document.getElementsByTagName('td')
+
 
 function incluirPalavrasPeloDOM() {
 
@@ -100,18 +127,35 @@ function incluirPalavrasPeloDOM() {
 
 
         if (direcional === 1) {
-            for (j = 0; j < palavraRecortada.length; j++) {
-                grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
+            for (j = 0; j < palavraRecortada.length; j++) {                
+                grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]                
+                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].id))
             }
-        }else for (j = 0; j < palavraRecortada.length; j++) {
+        } else for (j = 0; j < palavraRecortada.length; j++) {
             grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
+            coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].id))
         }
-
     }
 }
 
+console.log(palavra1)
+console.log(coordenadasPalavrasSelecionadas)
 incluirPalavrasPeloDOM()
 
 let tituloACacar = document.createElement('h3')
 tituloACacar.innerText = 'Palavras:'
 main.appendChild(tituloACacar)
+
+//Verificador de clicks
+const handleClick = (event) => {
+    const cell = event.target;
+
+
+    coordenadasClick.push(Number(cell.id));
+    console.log(coordenadasClick);
+}
+
+//Captura do Listner dos eventos
+for (let i = 0; i < linhas.length; i++) {
+    linhas[i].addEventListener("click", handleClick);
+}
