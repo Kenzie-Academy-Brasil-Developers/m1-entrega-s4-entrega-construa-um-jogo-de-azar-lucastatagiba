@@ -1,4 +1,16 @@
 const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
+let tabuleiro = [];
+let coordenadasClick = [];
+let coordenadasPalavrasSelecionadas = [];
+let colunas = document.getElementsByTagName('tr')
+let linhas = document.getElementsByTagName('td')
+let palavra1 = []
+let palavra2 = []
+let palavra3 = []
+
+
+// console.log(palavras[Math.floor(Math.random() * palavras.length)])
+
 
 const palavrasSelecionadas = [];
 
@@ -19,7 +31,6 @@ let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 // CRIA UMA MATRIZ VAZIA
 // altura (alt) e largura (lar)
-let tabuleiro = [];
 let variaveis = {alt: 10, lar:10};
 
 for(i = 0; i < variaveis.alt; i++){
@@ -46,9 +57,9 @@ function incluirPalavras(selecionada){
     let intervalo = 10 - palavrasSelecionadas[selecionada].length
     let palavraRecortada = palavrasSelecionadas[selecionada].split('')
 
-    let indiceInicial = (Math.floor(Math.random() * (intervalo+1)))
-    let indiceOrtogonal = (Math.floor(Math.random() * 10))
-    let direcional = Math.floor(Math.random()*2)
+        let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
+        let indiceOrtogonal = (Math.floor(Math.random() * 10))
+        let direcional = Math.floor(Math.random() * 2)
 
     if(direcional === 1){
         for(i = 0; i < palavraRecortada.length; i++){
@@ -83,16 +94,16 @@ main.appendChild(grade)
 
 for (let i = 0; i < 10; i++) {
     let coluna = document.createElement('tr')
-    grade.appendChild(coluna)
+    grade.appendChild(coluna);
     for (let j = 0; j < 10; j++) {
         let linha = document.createElement('td')
+        linha.id = `${i}${j}`;
         linha.innerText = (letras.charAt(Math.floor(Math.random() * letras.length)));
-        coluna.appendChild(linha)
+        coluna.appendChild(linha);
     }
 }
 
-let colunas = document.getElementsByTagName('tr')
-let linhas = document.getElementsByTagName('td')
+
 
 function incluirPalavrasPeloDOM() {
 
@@ -113,13 +124,18 @@ function incluirPalavrasPeloDOM() {
         if (direcional === 1) {
             for (j = 0; j < palavraRecortada.length; j++) {
                 grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
+                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].id))                                  
             }
-        }else for (j = 0; j < palavraRecortada.length; j++) {
-            grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
-        }
+        } else {
+            for (j = 0; j < palavraRecortada.length; j++) {
+                grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
+                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].id))
 
+            }
+        }
     }
 }
+console.log(coordenadasPalavrasSelecionadas)
 
 incluirPalavrasPeloDOM()
 
@@ -127,7 +143,24 @@ let tituloACacar = document.createElement('h3')
 tituloACacar.innerText = 'Palavras:'
 main.appendChild(tituloACacar)
 
+//Verificador de clicks
+const handleClick = (event) => {
+    const cell = event.target;
 
 
+    coordenadasClick.push(Number(cell.id));
+    palavra1 = coordenadasClick
+    console.log(coordenadasClick);    
+}
+
+function resetPalavra (){
+    coordenadasClick = [];
+    console.log(palavra1)
+}
+//console.log(palavra1)
+//Captura do Listner dos eventos
+for (let i = 0; i < linhas.length; i++) {
+    linhas[i].addEventListener("click", handleClick);
+}
 
 
