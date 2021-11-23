@@ -129,14 +129,19 @@ function incluirPalavrasPeloDOM() {
         if (direcional === 1) {
             for (j = 0; j < palavraRecortada.length; j++) {
                 grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
-                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].id))
+                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].id))                                  
             }
-        } else for (j = 0; j < palavraRecortada.length; j++) {
-            grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
-            coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].id))
+        } else {
+            for (j = 0; j < palavraRecortada.length; j++) {
+                grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
+                coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].id))
+
+            }
         }
     }
 }
+console.log(coordenadasPalavrasSelecionadas)
+
 incluirPalavrasPeloDOM()
 
 let tituloACacar = document.createElement('h3')
@@ -149,17 +154,16 @@ const handleClick = (event) => {
 
 
     coordenadasClick.push(Number(cell.id));
-    console.log(coordenadasClick);
-    compare()
+    palavra1 = coordenadasClick
+    console.log(coordenadasClick);    
 }
 
+function resetPalavra (){
+    coordenadasClick = [];
+    console.log(palavra1)
+}
+//console.log(palavra1)
 //Captura do Listner dos eventos
 for (let i = 0; i < linhas.length; i++) {
     linhas[i].addEventListener("click", handleClick);
-}
-
-function compare (){
-    for(let i = 0; i , coordenadasClick.length; i++){
-        coordenadasClick[i]
-    }
 }
