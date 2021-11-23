@@ -34,11 +34,17 @@ function incluirPalavras() {
 
     let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
     let indiceOrtogonal = (Math.floor(Math.random() * 10))
+    let direcional = Math.floor(Math.random() * 2)
 
-    for (i = 0; i < palavraRecortada.length; i++) {
-        tabuleiro[indiceInicial + i][indiceOrtogonal] = palavraRecortada[i]
+    if (direcional === 1) {
+        for (i = 0; i < palavraRecortada.length; i++) {
+            tabuleiro[indiceInicial + i][indiceOrtogonal] = palavraRecortada[i]
+        }
+    } else for (i = 0; i < palavraRecortada.length; i++) {
+        tabuleiro[indiceOrtogonal][indiceInicial + i] = palavraRecortada[i]
     }
-    
+    console.table(tabuleiro)
+
 }
 
 incluirPalavras()
@@ -74,7 +80,7 @@ let linhas = document.getElementsByTagName('td')
 
 function incluirPalavrasPeloDOM() {
 
-    for (let i = 0; i < palavrasSelecionadas.length; i++) { 
+    for (let i = 0; i < palavrasSelecionadas.length; i++) {
 
         let palavrasACacar = document.createElement('li')
         palavrasACacar.innerText = palavrasSelecionadas[i]
@@ -85,11 +91,18 @@ function incluirPalavrasPeloDOM() {
 
         let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
         let indiceOrtogonal = (Math.floor(Math.random() * 10))
+        let direcional = Math.floor(Math.random() * 2)
 
-        for (j = 0; j < palavraRecortada.length; j++) {              
-            grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j] 
+
+        if (direcional === 1) {
+            for (j = 0; j < palavraRecortada.length; j++) {
+                grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
+            }
+        }else for (j = 0; j < palavraRecortada.length; j++) {
+            grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
         }
-    } 
+
+    }
 }
 
 incluirPalavrasPeloDOM()
