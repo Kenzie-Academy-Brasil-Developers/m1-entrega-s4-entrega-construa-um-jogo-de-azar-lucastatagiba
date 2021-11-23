@@ -1,5 +1,11 @@
 const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
 let tabuleiro = [];
+let coordenadasClick = [];
+let coordenadasPalavras = [];
+let colunas = document.getElementsByTagName('tr')
+let linhas = document.getElementsByTagName('td')
+                
+
 // console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
 
@@ -10,7 +16,8 @@ for (i = 0; i < 3; i++) {
     if (!palavrasSelecionadas.includes(palavra)) {
         palavrasSelecionadas.push(palavra)
     }
-    else i--
+    else { i--
+    }
 }
 
 
@@ -27,6 +34,9 @@ for(i = 0; i < 10; i++){
     }
 }
 // console.table(tabuleiro);
+
+
+
 
 let teste = []
 
@@ -72,16 +82,16 @@ main.appendChild(grade)
 
 for (let i = 0; i < 10; i++) {
     let coluna = document.createElement('tr')
-    grade.appendChild(coluna)
+    grade.appendChild(coluna);
     for (let j = 0; j < 10; j++) {
         let linha = document.createElement('td')
+        linha.id = `${i}${j}`;
         linha.innerText = (letras.charAt(Math.floor(Math.random() * letras.length)));
-        coluna.appendChild(linha)
+        coluna.appendChild(linha);
     }
 }
 
-let colunas = document.getElementsByTagName('tr')
-let linhas = document.getElementsByTagName('td')
+
 
 function incluirPalavrasPeloDOM() {
 
@@ -116,7 +126,16 @@ let tituloACacar = document.createElement('h3')
 tituloACacar.innerText = 'Palavras:'
 main.appendChild(tituloACacar)
 
+//Verificador de clicks
+const handleClick = (event) => {
+    const cell = event.target;
 
 
+    coordenadasClick.push(Number(cell.id));
+    console.log(cordenadasClick);
+}
 
-
+//Captura do Listner dos eventos
+for(let i=0; i<linhas.length; i++){
+    linhas[i].addEventListener("click", handleClick);
+}
