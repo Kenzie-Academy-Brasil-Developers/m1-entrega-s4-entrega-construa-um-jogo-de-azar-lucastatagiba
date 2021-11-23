@@ -1,5 +1,6 @@
 body{
     width: 100vw;
+    background-image: url(img/_109103789_mediaitem109103788.jpg);
     
 }
 main{
@@ -15,10 +16,11 @@ h2{
     
 }
 table{
+    font-size: 30px;
     width: 100%;
     text-align: center;    
     margin: 100px auto;  
-    border: 1px solid black; 
+    border: 1px solid black;
     
 }
 td{    

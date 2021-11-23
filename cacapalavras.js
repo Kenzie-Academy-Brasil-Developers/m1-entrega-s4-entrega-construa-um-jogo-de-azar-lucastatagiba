@@ -137,9 +137,6 @@ function incluirPalavrasPeloDOM() {
         }
     }
 }
-
-console.log(palavra1)
-console.log(coordenadasPalavrasSelecionadas)
 incluirPalavrasPeloDOM()
 
 let tituloACacar = document.createElement('h3')
@@ -153,9 +150,16 @@ const handleClick = (event) => {
 
     coordenadasClick.push(Number(cell.id));
     console.log(coordenadasClick);
+    compare()
 }
 
 //Captura do Listner dos eventos
 for (let i = 0; i < linhas.length; i++) {
     linhas[i].addEventListener("click", handleClick);
+}
+
+function compare (){
+    for(let i = 0; i , coordenadasClick.length; i++){
+        coordenadasClick[i]
+    }
 }
