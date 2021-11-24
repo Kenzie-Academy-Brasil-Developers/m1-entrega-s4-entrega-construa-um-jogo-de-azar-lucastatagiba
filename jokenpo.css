@@ -1,6 +1,18 @@
+body{
+    height: 100%;
+}
+main{
+    background-color: wheat;
+}
+p img{
+    width: 200px;
+}
 #divInputs{
     display: flex;
     flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 .bg-modal {
     width: 100%;

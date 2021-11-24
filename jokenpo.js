@@ -11,20 +11,30 @@ divInputs.id = 'divInputs'
 const inputPedra = document.createElement('input')
 inputPedra.type = 'radio'
 inputPedra.id = 'pedra'
+inputPedra.innerText = 'pedra'
 const descricaoPedra = document.createElement('p')
 descricaoPedra.innerText = 'Pedra'
+const img1 = document.createElement('img')
+descricaoPedra.appendChild(img1)
+img1.setAttribute('src', 'img/pedra1.png')
 
 const inputPapel = document.createElement('input')
 inputPapel.type = 'radio'
 inputPapel.id = 'papel'
 const descricaoPapel = document.createElement('p')
 descricaoPapel.innerText = 'Papel'
+const img2 = document.createElement('img')
+descricaoPapel.appendChild(img2)
+img2.setAttribute('src', 'img/papel1.png')
 
 const inputTesoura = document.createElement('input')
 inputTesoura.type = 'radio'
 inputTesoura.id = 'tesoura'
 const descricaoTesoura = document.createElement('p')
 descricaoTesoura.innerText = 'Tesoura'
+const img3 = document.createElement('img')
+descricaoTesoura.appendChild(img3)
+img3.setAttribute('src', 'img/tesoura1.png')
 
 const divBotoes = document.createElement('div')
 divBotoes.id = 'divBotoes'
@@ -47,17 +57,6 @@ ganhador.innerText = 'Vencedor:'
 
 const pResultadoGanhador= document.createElement('p')
 
-const buttonTrocarJogo = document.createElement('button')
-buttonTrocarJogo.innerText = 'Jogo Caça-Tesouros'
-
-
-function trocarJogo(){
-    buttonTrocarJogo.href = 'index.html'
-}
-
-
-buttonTrocarJogo.addEventListener('click', trocarJogo )
-
 
 main.appendChild(h2)
 main.appendChild(h3Jogador)
@@ -66,7 +65,6 @@ main.appendChild(h3Computador)
 main.appendChild(pResultadoPC)
 main.appendChild(ganhador)
 main.appendChild(pResultadoGanhador)
-main.appendChild(buttonTrocarJogo)
 form.appendChild(divInputs)
 divInputs.appendChild(inputPedra)
 divInputs.appendChild(descricaoPedra)
@@ -119,9 +117,3 @@ function jogar (){
 }
 
 botaoJogar.addEventListener('click', jogar)
-inputReset.addEventListener('click', reset)
-
-function reset (){
-    pResultadoPC.innerText = ''
-    pResultadoGanhador.innerHTML = ''
-}

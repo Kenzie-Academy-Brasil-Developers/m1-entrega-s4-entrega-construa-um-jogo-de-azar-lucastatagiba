@@ -5,8 +5,6 @@ const palavras = [
     'platina','ouro','prata','cobre','estanho'
 ];
 
-Audio.play()
-
 let tabuleiro = [];
 let coordenadasClick = [];
 let coordenadasPalavrasSelecionadas = [];
@@ -24,7 +22,7 @@ function modalVitoria(){
 }
 function closeModalVitoria(){
     document.getElementById('bgModalVitoria').style.top = '-150%'     
-
+    resetGame()
 }
 
 const palavrasSelecionadas = [];
@@ -255,5 +253,7 @@ button.addEventListener('click', closeModal)
 const button2 = document.querySelector('.jogarNovamente')
 button2.addEventListener('click', closeModalVitoria)
 
-
+function resetGame(){
+    document.location.href = "index.html"
+}
 
