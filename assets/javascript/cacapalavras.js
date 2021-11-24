@@ -256,4 +256,8 @@ button2.addEventListener('click', closeModalVitoria)
 function resetGame(){
     document.location.href = "index.html"
 }
+Audio.play()
+
+
+
 

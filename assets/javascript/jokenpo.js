@@ -16,7 +16,7 @@ const descricaoPedra = document.createElement('p')
 descricaoPedra.innerText = 'Pedra'
 const img1 = document.createElement('img')
 descricaoPedra.appendChild(img1)
-img1.setAttribute('src', 'img/pedra1.png')
+img1.setAttribute('src', '../img/pedra1.png')
 
 const inputPapel = document.createElement('input')
 inputPapel.type = 'radio'
@@ -25,7 +25,7 @@ const descricaoPapel = document.createElement('p')
 descricaoPapel.innerText = 'Papel'
 const img2 = document.createElement('img')
 descricaoPapel.appendChild(img2)
-img2.setAttribute('src', 'img/papel1.png')
+img2.setAttribute('src', '../img/papel1.png')
 
 const inputTesoura = document.createElement('input')
 inputTesoura.type = 'radio'
@@ -34,7 +34,7 @@ const descricaoTesoura = document.createElement('p')
 descricaoTesoura.innerText = 'Tesoura'
 const img3 = document.createElement('img')
 descricaoTesoura.appendChild(img3)
-img3.setAttribute('src', 'img/tesoura1.png')
+img3.setAttribute('src', '../img/tesoura1.png')
 
 const divBotoes = document.createElement('div')
 divBotoes.id = 'divBotoes'
