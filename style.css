@@ -1,7 +1,5 @@
 body{    
     background-image: url(img/fundo-fotografico-em-tecido-mapa-do-tesouro-2-60-x-1-50-painel.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
 }
 
@@ -25,9 +23,16 @@ table{
     border: 1px solid black;
     background-color: #f5f5dcbd;
 }
+
+td:hover {
+    border: 1px solid black;
+    cursor: pointer; 
+}
+
 td{    
     padding: 2%;
     margin-top: 10px;    
+    border: 1px solid transparent;  
 }
 h3{
     margin: 0 auto 20px; 
@@ -39,7 +44,149 @@ li{
     background-color: #f5f5dcbd;
     width: 115px;
     margin: 0 auto;            
-    font-size: 20px; 
+    font-size: 15px; 
+}
+.riscar{
+    text-decoration: line-through;
+}
+.marcar{
+    text-decoration:line-through; 
+    color: rgb(255, 174, 0);  
+}
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.75);
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: block;
+    transition: 650ms;
+}
+
+
+
+.modal {
+    width: 70%;
+    background-color: #dcedec;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin: 100px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #DAA520;;
+    margin: 10px;
+
+}
+
+.modal h3 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: #EEC900;
+    margin: 5px;
+}
+
+.modal p {
+    font-family: 'Satisfy', cursive;
+    padding: 0 15px;
+    color: #DAA520;
+}
+
+
+.bg-modalVitoria {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.75);
+    position: fixed;
+    z-index: 2;
+    top: -150%;
+    left: 0;
+    display: block;
+    transition: 650ms;
+}
+
+.modalVitoria {
+    width: 70%;
+    background-color: #dcedec;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin: 100px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modalVitoria h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: #DAA520;
+    margin: 10px;
+
+}
+
+.modalVitoria h3 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: #EEC900;
+    margin: 5px;
+}
+
+.modalVitoria p {
+    font-family: 'Satisfy', cursive;
+    padding: 0 15px;
+}
+
+.play-button {
+    cursor: pointer;
+    color: #EEC900;
+    background-color: #f5f5dcbd;
+    height: 50px;
+    font-size: 20px;
+}
+
+.jogarNovamente{
+    cursor: pointer;
+    color: #DAA520;
+    background-color: #f5f5dcbd; 
+    height: 50px;
+    font-size: 20px;
+}
+
+.bau{
+    float: right;
+    min-width: 300px;
+    width: 50%;  
+}
+
+.pirata{
+    float: right;
+    min-width: 300px;
+    width: 50%;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-700px) rotate(960deg);
+    }
 }
 
 @media screen and (min-width: 500px){
@@ -49,5 +196,38 @@ li{
         margin: 100px auto;  
         border: 1px solid blue;     
     } 
+    .modal {
+        max-width: 500px;
+        background-color: #dcedec;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 100px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .modalVitoria {
+        max-width: 500px;
+        background-color: #dcedec;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 100px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pirata{
+        float: right;
+        max-width: 800px;
+        width: 50%;
+    }
+    
+    .bau{
+        float: right;
+        max-width: 800px;
+        width: 50%; 
+    }
+    
 }
 
