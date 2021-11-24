@@ -5,6 +5,8 @@ const palavras = [
     'platina','ouro','prata','cobre','estanho'
 ];
 
+Audio.play()
+
 let tabuleiro = [];
 let coordenadasClick = [];
 let coordenadasPalavrasSelecionadas = [];
@@ -21,11 +23,13 @@ function modalVitoria(){
     document.getElementById('bgModalVitoria').style.top = '0'    
 }
 function closeModalVitoria(){
-    document.getElementById('bgModalVitoria').style.top = '-150%'    
+    document.getElementById('bgModalVitoria').style.top = '-150%'     
+
 }
 
 const palavrasSelecionadas = [];
 
+// SELECIONA TRÊS PALAVRAS DO ARRAY 'PALAVRAS' SEM REPETIÇÃO
 for (i = 0; i < 3; i++) {
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
     if (!palavrasSelecionadas.includes(palavra.toUpperCase())) {
@@ -36,9 +40,54 @@ for (i = 0; i < 3; i++) {
     }
 }
 
-//gerador de letra aleatório
-const letras = 'ABCDEFGHIJLMOPQRSTUVXZ';
+// gera um caractére aleatório dentre os presente na lista
+const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
+
+// CRIA UMA MATRIZ VAZIA
+// altura (alt) e largura (lar)
+let variaveis = {alt: 10, lar:10};
+
+for(i = 0; i < variaveis.alt; i++){
+    tabuleiro.push([]);
+    for(j = 0; j < variaveis.lar; j++){
+        tabuleiro[i].push('');
+        //= (letras.charAt(Math.floor(Math.random() * letras.length)));  
+        // comentario a cima preenche com letras aleatorias
+    }
+}
+
+
+for(k = 0 ; k < palavrasSelecionadas.length; k++){
+    incluirPalavras(k)
+}
+
+// função para adicionar palavra em posição aleatória - funcional - 3 palavras.
+// Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
+// PROBLEMA: PALAVRAS SE SOBREESCREVEM
+function incluirPalavras(selecionada){
+    let intervalo = 10 - palavrasSelecionadas[selecionada].length
+    let palavraRecortada = palavrasSelecionadas[selecionada].split('')
+
+        let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
+        let indiceOrtogonal = (Math.floor(Math.random() * 10))
+        let direcional = Math.floor(Math.random() * 2)
+
+    if(direcional === 1){
+        for(i = 0; i < palavraRecortada.length; i++){
+        tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
+        }
+    }
+    if(direcional === 0){
+        for(i = 0; i < palavraRecortada.length; i++){
+            tabuleiro[indiceOrtogonal][indiceInicial+i] = palavraRecortada[i]
+        }
+    }
+}
+
+// incluirPalavras()
+
+
 
 // pega palavra aleatŕoio no índice - RANDOM
 // criando uma nova variável da palavra como SPLIT
@@ -124,7 +173,7 @@ const handleClick = (event) => {
 
     coordenadasClick.push(Number(cell.id));
     coordenadasClick.sort((a, b) => a - b)
-    
+    console.log(coordenadasClick)
     //event.target.style = 'border:1px solid red;'
     arr = [...resposta[0], ...resposta[1], ...resposta[2]]
 
@@ -205,5 +254,6 @@ button.addEventListener('click', closeModal)
 
 const button2 = document.querySelector('.jogarNovamente')
 button2.addEventListener('click', closeModalVitoria)
+
 
 
