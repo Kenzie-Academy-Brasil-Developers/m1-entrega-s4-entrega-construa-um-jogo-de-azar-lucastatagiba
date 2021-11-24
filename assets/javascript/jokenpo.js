@@ -170,7 +170,7 @@ function resetar(event){
     coordenadasClick = []
     pResultadoPC.innerText = ''
     pResultadoGanhador.innerHTML = ''
-    for(let i = 0; i < 3; i++){
+    for(let i = 0; i < 4; i++){
     const cell = event.target.closest('main').childNodes[4].childNodes[0].childNodes[i]
     console.log(cell)
     cell.style = 'border: 1px solid trasparent'
