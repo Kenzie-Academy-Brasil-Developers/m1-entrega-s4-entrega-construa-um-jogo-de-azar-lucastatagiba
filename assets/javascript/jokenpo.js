@@ -2,39 +2,64 @@ const main = document.getElementById('main')
 const h2 = document.createElement('h2')
 h2.innerText = 'Pedra, Papel e Tesoura'
 const h3Jogador = document.createElement('h3')
-h3Jogador.innerText = 'Jogador:'
+
 const form = document.createElement('form')
+let coordenadasClick = []
 
 const divInputs = document.createElement('div')
 divInputs.id = 'divInputs'
 
-const inputPedra = document.createElement('input')
-inputPedra.type = 'radio'
-inputPedra.id = 'pedra'
-inputPedra.innerText = 'pedra'
-const descricaoPedra = document.createElement('p')
-descricaoPedra.innerText = 'Pedra'
+let divJogador = document.createElement('div')
+divJogador.id = 'divJogador'
+
+const informe = document.createElement('p')
+informe.id = 'informe'
+informe.innerText = 'ESCOLHA O SEU ABAIXO!'
+divJogador.appendChild(informe)
+
 const img1 = document.createElement('img')
-descricaoPedra.appendChild(img1)
-img1.setAttribute('src', '../img/pedra1.png')
+divJogador.appendChild(img1)
+img1.setAttribute('src', 'assets/img/pedra1.png')
+img1.id = 0
 
-const inputPapel = document.createElement('input')
-inputPapel.type = 'radio'
-inputPapel.id = 'papel'
-const descricaoPapel = document.createElement('p')
-descricaoPapel.innerText = 'Papel'
 const img2 = document.createElement('img')
-descricaoPapel.appendChild(img2)
-img2.setAttribute('src', '../img/papel1.png')
+divJogador.appendChild(img2)
+img2.setAttribute('src', 'assets/img/papel1.png')
+img2.id = 1
 
-const inputTesoura = document.createElement('input')
-inputTesoura.type = 'radio'
-inputTesoura.id = 'tesoura'
-const descricaoTesoura = document.createElement('p')
-descricaoTesoura.innerText = 'Tesoura'
 const img3 = document.createElement('img')
-descricaoTesoura.appendChild(img3)
-img3.setAttribute('src', '../img/tesoura1.png')
+divJogador.appendChild(img3)
+img3.setAttribute('src', 'assets/img/tesoura1.png')
+img3.id = 2
+
+let divJogadores = document.createElement('div')
+divJogadores.id = 'divJogadores'
+
+//DIV COMPUTADOR
+const informePC = document.createElement('p')
+informePC.id = 'informePC'
+informePC.innerText = 'COMPUTADOR!'
+
+let divComputador = document.createElement('div')
+divComputador.id = 'divComputador'
+
+divComputador.appendChild(informePC)
+
+const img4 = document.createElement('img')
+divComputador.appendChild(img4)
+img4.setAttribute('src', 'assets/img/tesoura2.png')
+img4.id = 3
+
+const img5 = document.createElement('img')
+divComputador.appendChild(img5)
+img5.setAttribute('src', 'assets/img/papel2.jpg')
+img5.id = 4
+
+const img6 = document.createElement('img')
+divComputador.appendChild(img6)
+img6.setAttribute('src', 'assets/img/pedra2.png')
+img6.id = 5
+
 
 const divBotoes = document.createElement('div')
 divBotoes.id = 'divBotoes'
@@ -57,21 +82,25 @@ ganhador.innerText = 'Vencedor:'
 
 const pResultadoGanhador= document.createElement('p')
 
+let divVitoria = document.createElement('div')
+divVitoria.id = 'divVitoria'
 
 main.appendChild(h2)
 main.appendChild(h3Jogador)
 main.appendChild(form)
-main.appendChild(h3Computador)
-main.appendChild(pResultadoPC)
+main.appendChild(divJogadores)
+divJogadores.appendChild(divJogador)
+
+divJogadores.appendChild(divComputador)
 main.appendChild(ganhador)
-main.appendChild(pResultadoGanhador)
 form.appendChild(divInputs)
-divInputs.appendChild(inputPedra)
-divInputs.appendChild(descricaoPedra)
-divInputs.appendChild(inputPapel)
-divInputs.appendChild(descricaoPapel)
-divInputs.appendChild(inputTesoura)
-divInputs.appendChild(descricaoTesoura)
+main.appendChild(divVitoria)
+
+divVitoria.appendChild(h3Computador)
+divVitoria.appendChild(pResultadoPC)
+divVitoria.appendChild(ganhador)
+divVitoria.appendChild(pResultadoGanhador)
+
 form.appendChild(divBotoes)
 divBotoes.appendChild(botaoJogar)
 divBotoes.appendChild(inputReset)
@@ -83,8 +112,31 @@ function closeModal() {
 const button = document.querySelector('.play-button')
 button.addEventListener('click', closeModal)
 
+//funçao de click, selecionando imagem
+
+const handleClick = (event) => {
+    
+    const cell = event.target
+    console.log(cell)
+    
+    
+    coordenadasClick.push(Number(cell.id));
+    //coordenadasClick.sort((a, b) => a - b)
+    console.log(coordenadasClick)
+    cell.style = 'border: solid 1px black'
+}
+
+
+
+    img1.addEventListener("click", handleClick);   
+
+    img2.addEventListener("click", handleClick);   
+
+    img3.addEventListener("click", handleClick);   
+
+
 function jogar (){
-    if(inputPedra.checked == false && inputPapel.checked == false && inputTesoura.checked == false){
+    if(coordenadasClick.length < 1){
         alert('ESCOLHA UMA OPCÃO ENTRE PEDRA, PAPEL OU TESOURA')
     }else{
         let sortear = Math.floor(Math.random() * 3)
@@ -101,19 +153,29 @@ function jogar (){
         }
     }
     // verificar empate // 
-    if(inputPedra.checked == true && pResultadoPC.innerText == 'Pedra' || inputPapel.checked == true && pResultadoPC.innerText == 'Papel' || inputTesoura.checked == true && pResultadoPC.innerText == 'Tesoura'){
+    if(coordenadasClick[0] === 0 && pResultadoPC.innerText == 'Pedra' || coordenadasClick[0] === 1 && pResultadoPC.innerText == 'Papel' || coordenadasClick[0] === 2 && pResultadoPC.innerText == 'Tesoura'){
         pResultadoGanhador.innerHTML = 'Empatouuuu!!!!!'
     } 
     // verificar vitoria do jogador// 
-    else if(inputPedra.checked == true && pResultadoPC.innerText == 'Tesoura' || inputPapel.checked == true && pResultadoPC.innerText == 'Pedra' || inputTesoura.checked == true && pResultadoPC.innerText == 'Papel'){
+    else if(coordenadasClick[0] === 0 && pResultadoPC.innerText == 'Tesoura' || coordenadasClick[0] === 1 && pResultadoPC.innerText == 'Pedra' || coordenadasClick[0] === 2 && pResultadoPC.innerText == 'Papel'){
         pResultadoGanhador.innerHTML = 'Parabenssss você GANHOOOUU!!!!!'
     }
     // verificar vitoria do computador// 
-    else if(inputPedra.checked == true && pResultadoPC.innerText == 'Papel' || inputPapel.checked == true && pResultadoPC.innerText == 'Tesoura' || inputTesoura.checked == true && pResultadoPC.innerText == 'Pedra'){
+    else if(coordenadasClick[0] === 0 && pResultadoPC.innerText == 'Papel' || coordenadasClick[0] === 1 && pResultadoPC.innerText == 'Tesoura' || coordenadasClick[0] === 2 && pResultadoPC.innerText == 'Pedra'){
         pResultadoGanhador.innerHTML = 'Ahhhh o PC ganhou !!!! TENTE NOVAMENTE !!'
     }
+}
 
-
+function resetar(event){
+    coordenadasClick = []
+    pResultadoPC.innerText = ''
+    pResultadoGanhador.innerHTML = ''
+    for(let i = 0; i < 3; i++){
+    const cell = event.target.closest('main').childNodes[4].childNodes[0].childNodes[i]
+    console.log(cell)
+    cell.style = 'border: 1px solid trasparent'
+    }
 }
 
 botaoJogar.addEventListener('click', jogar)
+inputReset.addEventListener('click', resetar)

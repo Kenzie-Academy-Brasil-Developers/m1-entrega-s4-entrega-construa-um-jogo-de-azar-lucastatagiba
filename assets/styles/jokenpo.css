@@ -1,12 +1,47 @@
+html{
+    height: 100%;
+}
+
+#informePC{
+    display: none;
+}
+
 body{
     height: 100%;
 }
+
+h2{
+    font-size: 30px;
+}
+
 main{
     background-color: wheat;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-p img{
-    width: 200px;
+img{
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    border: 1px solid transparent;
 }
+
+#divComputador{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#divJogador{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #divInputs{
     display: flex;
     flex-direction: row;
@@ -27,14 +62,17 @@ p img{
 }
 
 .modal {
+    max-width: 500px;
     width: 70%;
-    background-color: #f0dada;
+    height: 500px;
+    background-color: wheat;
     border: 1px solid #000000;
     border-radius: 5px;
     margin: 100px auto 0 auto;
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: space-between;
 }
 
 .modal h1 {
@@ -58,6 +96,42 @@ p img{
     font-family: 'Satisfy', cursive;
     padding: 0 15px;
 }
+
+#divComputador img{
+    display: none;
+}
+
+#divVitoria p{
+    margin-bottom: 50px;
+}
+
+#divVitoria{
+    text-align: center;
+}
+
+#divJogador:hover{
+    cursor: pointer;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+#divVitoria p{
+    border: solid 2px blue;
+    background-color: tomato;
+    color: blue;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#divVitoria h3{
+    font-size: 20px;
+}
+
 @keyframes up {
     from {
         opacity: 0;
@@ -69,5 +143,38 @@ p img{
     to {
         opacity: 0;
         transform: translateY(-700px) rotate(960deg);
+    }
+}
+
+@media screen and (min-width: 500px){
+    #divComputador img{
+        display: inline;
+    }
+    #divJogadores{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 600px;
+    }
+    input{
+        margin: 20px;
+        background-color: tomato;
+        width: 150px;
+        height: 30px;
+        color: blue;
+        border: blue 1px solid;
+    }
+    h2{
+        font-size: 50px;
+    }
+    #informePC{
+        display: inline;
+        text-align: center;
+    }
+    #divVitoria h3{
+        font-size: 30px;
+    }
+    #activate1 {
+        font-size: 30px;
     }
 }
