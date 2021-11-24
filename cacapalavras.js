@@ -14,72 +14,67 @@ let palavra3 = []
 
 const palavrasSelecionadas = [];
 
+// SELECIONA TRÊS PALAVRAS DO ARRAY 'PALAVRAS' SEM REPETIÇÃO
 for (i = 0; i < 3; i++) {
     let palavra = palavras[Math.floor(Math.random() * palavras.length)]
     if (!palavrasSelecionadas.includes(palavra)) {
         palavrasSelecionadas.push(palavra)
-    }
-    else {
+    } else {
         i--
     }
 }
 console.log(palavrasSelecionadas)
 
-//gerador de letra aleatório
+// gera um caractére aleatório dentre os presente na lista
 const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
-//gerador da matriz de letras
+// CRIA UMA MATRIZ VAZIA
+// altura (alt) e largura (lar)
+let variaveis = {alt: 10, lar:10};
 
-for (i = 0; i < 10; i++) {
-    tabuleiro[i] = [];
-    for (j = 0; j < 10; j++) {
-        tabuleiro[i][j] = []
+for(i = 0; i < variaveis.alt; i++){
+    tabuleiro.push([]);
+    for(j = 0; j < variaveis.lar; j++){
+        tabuleiro[i].push('');
         //= (letras.charAt(Math.floor(Math.random() * letras.length)));  
         // comentario a cima preenche com letras aleatorias
     }
 }
+console.table(tabuleiro)
 
-for (let i = 0; i < 3; i++) {
-    if (tabuleiro[i] == []) {
-        incluirPalavras()
-    }
+for(k = 0 ; k < palavrasSelecionadas.length; k++){
+    incluirPalavras(k)
 }
-
-
 
 
 // console.table(tabuleiro);
 
-
-
-
-let teste = []
-
-// função para adicionar palavra em posição aleatória - funcional - apenas 1 palavra. Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
-function incluirPalavras() {
-    for (let j = 0; j < palavrasSelecionadas.length; j++) {
-
-        let intervalo = 10 - palavrasSelecionadas[j].length
-        let palavraRecortada = palavrasSelecionadas[j].split('')
+// função para adicionar palavra em posição aleatória - funcional - 3 palavras.
+// Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
+// PROBLEMA: PALAVRAS SE SOBREESCREVEM
+function incluirPalavras(selecionada){
+    let intervalo = 10 - palavrasSelecionadas[selecionada].length
+    let palavraRecortada = palavrasSelecionadas[selecionada].split('')
 
         let indiceInicial = (Math.floor(Math.random() * (intervalo + 1)))
         let indiceOrtogonal = (Math.floor(Math.random() * 10))
         let direcional = Math.floor(Math.random() * 2)
 
-        if (direcional === 1) {
-            for (i = 0; i < palavraRecortada.length; i++) {
-                tabuleiro[indiceInicial + i][indiceOrtogonal] = palavraRecortada[i]
-            }
-        } else for (i = 0; i < palavraRecortada.length; i++) {
-            tabuleiro[indiceOrtogonal][indiceInicial + i] = palavraRecortada[i]
-
+    if(direcional === 1){
+        for(i = 0; i < palavraRecortada.length; i++){
+        tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
         }
-        console.table(tabuleiro)
     }
+    if(direcional === 0){
+        for(i = 0; i < palavraRecortada.length; i++){
+            tabuleiro[indiceOrtogonal][indiceInicial+i] = palavraRecortada[i]
+        }
+    }
+    console.table(tabuleiro)
 }
 
-incluirPalavras()
+// incluirPalavras()
 
 
 
