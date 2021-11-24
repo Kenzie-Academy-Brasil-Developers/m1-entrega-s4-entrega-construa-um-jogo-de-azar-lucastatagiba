@@ -30,13 +30,123 @@ h3{
     width: 100%;
     margin: 0 auto 20px; 
     text-align: center;    
-    font-size: 30px;
+    font-size:  30px;
 }
 li{
     
     width: 115px;
     margin: 0 auto;            
-    font-size: 20px; 
+    font-size: 15px; 
+}
+.riscar{
+    text-decoration: line-through;
+}
+.marcar{
+    text-decoration:line-through; 
+    color: rgb(255, 174, 0);  
+}
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.75);
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: block;
+    transition: 650ms;
+}
+
+.modal {
+    width: 70%;
+    background-color: #f0dada;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin: 100px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #b93333f8;
+    margin: 10px;
+
+}
+
+.modal h3 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: #b93333f8;
+    margin: 5px;
+}
+
+.modal p {
+    font-family: 'Satisfy', cursive;
+    padding: 0 15px;
+}
+
+
+.bg-modalVitoria {
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.75);
+    position: fixed;
+    z-index: 2;
+    top: -150%;
+    left: 0;
+    display: block;
+    transition: 650ms;
+}
+
+.modalVitoria {
+    width: 70%;
+    background-color: #f0dada;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin: 100px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modalVitoria h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #b93333f8;
+    margin: 10px;
+
+}
+
+.modalVitoria h3 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: #b93333f8;
+    margin: 5px;
+}
+
+.modalVitoria p {
+    font-family: 'Satisfy', cursive;
+    padding: 0 15px;
+}
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-700px) rotate(960deg);
+    }
 }
 
 @media screen and (min-width: 500px){
@@ -46,5 +156,26 @@ li{
         margin: 100px auto;  
         border: 1px solid blue;     
     } 
+    .modal {
+        max-width: 500px;
+        background-color: #f0dada;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 100px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .modalVitoria {
+        max-width: 500px;
+        background-color: #f0dada;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin: 100px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
 }
 
