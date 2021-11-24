@@ -5,7 +5,7 @@ const palavras = [
     'platina','ouro','prata','cobre','estanho'
 ];
 
-Audio.play()
+
 
 let tabuleiro = [];
 let coordenadasClick = [];
@@ -254,6 +254,9 @@ button.addEventListener('click', closeModal)
 
 const button2 = document.querySelector('.jogarNovamente')
 button2.addEventListener('click', closeModalVitoria)
+
+Audio.play()
+
 
 
 
