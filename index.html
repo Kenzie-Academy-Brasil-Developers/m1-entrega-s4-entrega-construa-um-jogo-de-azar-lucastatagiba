@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>    
+<body>  
+    <header>
+        <nav>
+            Trocar de Jogo
+            <a id="activate1" href="indexJokenpo.html">Pedra, Papel e Tesoura</a>            
+        </nav>
+    </header>  
     <h2>Caça Tesouros</h2>   
     <div class="bg-modal" id="bgModal">
         <div class="modal" id="modal">
@@ -19,7 +25,7 @@
             <button class="play-button" onclick="closeModal()">Jogar</button>
 
         </div>
-        
+        <img class="pirata" src="img/pirata1.png" alt="pirata">
     </div> 
     <div class="bg-modalVitoria" id="bgModalVitoria">
         <div class="modalVitoria" id="modalVitoria">
@@ -29,15 +35,15 @@
             <button class="jogarNovamente" onclick="closeModal()">Jogar Novamente</button>
 
         </div>
-        
+        <img class="bau" src="img/Bau tesouro.png" alt="bau">
     </div> 
     <main id='main'>
         
 
 
-
     </main>
 
+    <audio src="sounds/y2meta.com - Klaus Badelt - He's a Pirate (320 kbps).mp3"></audio>    
     
     <script src="cacapalavras.js"></script>
 </body>
