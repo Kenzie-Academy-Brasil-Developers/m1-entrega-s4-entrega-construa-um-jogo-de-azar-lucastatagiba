@@ -5,6 +5,8 @@ const palavras = [
     'platina','ouro','prata','cobre','estanho'
 ];
 
+Audio.play()
+
 let tabuleiro = [];
 let coordenadasClick = [];
 let coordenadasPalavrasSelecionadas = [];
@@ -21,7 +23,8 @@ function modalVitoria(){
     document.getElementById('bgModalVitoria').style.top = '0'    
 }
 function closeModalVitoria(){
-    document.getElementById('bgModalVitoria').style.top = '-150%'    
+    document.getElementById('bgModalVitoria').style.top = '-150%'     
+
 }
 
 const palavrasSelecionadas = [];
@@ -170,7 +173,7 @@ const handleClick = (event) => {
 
     coordenadasClick.push(Number(cell.id));
     coordenadasClick.sort((a, b) => a - b)
-    
+    console.log(coordenadasClick)
     //event.target.style = 'border:1px solid red;'
     arr = [...resposta[0], ...resposta[1], ...resposta[2]]
 
@@ -251,5 +254,6 @@ button.addEventListener('click', closeModal)
 
 const button2 = document.querySelector('.jogarNovamente')
 button2.addEventListener('click', closeModalVitoria)
+
 
 
