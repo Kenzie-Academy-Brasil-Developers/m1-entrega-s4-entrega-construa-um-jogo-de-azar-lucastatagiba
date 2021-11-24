@@ -1,13 +1,22 @@
-const palavras = ['kenzie', 'academy', 'teste', 'jogo', 'banana', 'tomate', 'espinafre', 'programar', 'dado', 'teclado', 'mouse', 'notebook', 'pato', 'lata', 'java', 'webcam', 'headset', 'microfone', 'telefone', 'sprint'];
+const palavras = [
+    'rubi','diamante','safira','esmeralda','topaz',
+    'turmalina','malaquita','turquesa','ambar','citrino',
+    'ametista','zirconio','onix','obsidiana','jade',
+    'platina','ouro','prata','cobre','estanho'
+];
+
+
 let tabuleiro = [];
+let tabuleiroVirtual = [];
 let coordenadasClick = [];
 let coordenadasPalavrasSelecionadas = [];
-let colunas = document.getElementsByTagName('tr')
-let linhas = document.getElementsByTagName('td')
-let palavra1 = []
-let palavra2 = []
-let palavra3 = []
+let colunas = document.getElementsByTagName('tr');
+let linhas = document.getElementsByTagName('td');
+let palavra1 = [];
+let palavra2 = [];
+let palavra3 = [];
 
+let localizador = [];
 
 // console.log(palavras[Math.floor(Math.random() * palavras.length)])
 
@@ -26,7 +35,8 @@ for (i = 0; i < 3; i++) {
 console.log(palavrasSelecionadas)
 
 // gera um caractére aleatório dentre os presente na lista
-const letras = 'ABCDEFGHIJKLMOPQRSTUVWXYZ';
+const letras = 'ABCDEFGHIJLMNOPQRSTUVXZ';
+const letrasCheck = 'abcdefghijlmnopqrstuvxz';
 let letra = letras.charAt(Math.floor(Math.random() * letras.length));
 
 // CRIA UMA MATRIZ VAZIA
@@ -35,13 +45,17 @@ let variaveis = {alt: 10, lar:10};
 
 for(i = 0; i < variaveis.alt; i++){
     tabuleiro.push([]);
+    tabuleiroVirtual.push([]);
     for(j = 0; j < variaveis.lar; j++){
         tabuleiro[i].push('');
+        tabuleiroVirtual[i].push('');
         //= (letras.charAt(Math.floor(Math.random() * letras.length)));  
         // comentario a cima preenche com letras aleatorias
     }
 }
 console.table(tabuleiro)
+console.table(tabuleiroVirtual)
+
 
 for(k = 0 ; k < palavrasSelecionadas.length; k++){
     incluirPalavras(k)
@@ -53,6 +67,7 @@ for(k = 0 ; k < palavrasSelecionadas.length; k++){
 // função para adicionar palavra em posição aleatória - funcional - 3 palavras.
 // Tanto na horizontal quanto vertical e abrangendo toda a extenção da matriz 10x10.
 // PROBLEMA: PALAVRAS SE SOBREESCREVEM
+
 function incluirPalavras(selecionada){
     let intervalo = 10 - palavrasSelecionadas[selecionada].length
     let palavraRecortada = palavrasSelecionadas[selecionada].split('')
@@ -63,7 +78,7 @@ function incluirPalavras(selecionada){
 
     if(direcional === 1){
         for(i = 0; i < palavraRecortada.length; i++){
-        tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
+            tabuleiro[indiceInicial+i][indiceOrtogonal] = palavraRecortada[i]
         }
     }
     if(direcional === 0){
@@ -73,6 +88,7 @@ function incluirPalavras(selecionada){
     }
     console.table(tabuleiro)
 }
+console.log(localizador)
 
 // incluirPalavras()
 
@@ -126,11 +142,11 @@ function incluirPalavrasPeloDOM() {
                 grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].innerText = palavraRecortada[j]
                 coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceInicial + j].childNodes[indiceOrtogonal].id))                                  
             }
-        } else {
+        }
+        if (direcional === 0) {
             for (j = 0; j < palavraRecortada.length; j++) {
                 grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].innerText = palavraRecortada[j]
                 coordenadasPalavrasSelecionadas.push(Number(grade.childNodes[indiceOrtogonal].childNodes[indiceInicial + j].id))
-
             }
         }
     }
