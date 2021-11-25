@@ -47,6 +47,7 @@ table{
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     font-size: 30px;
+    max-width: 600px;
     margin: 20px 0;
     width: 100%;
     text-align: center;
@@ -114,7 +115,7 @@ li{
 
 
 
-.modal {
+.modal, .modalVitoria {
     width: 70%;
     background-color: #dcedec;
     border: 1px solid #000000;
@@ -125,29 +126,30 @@ li{
     text-align: center;
 }
 
-.modal h1 {
-    font-family: 'Satisfy', cursive;
-    font-size: 3rem;
+.modal h1, .modalVitoria h1{
+    font-family: 'Estonia';
+    font-size: 3.5rem;
+    line-height: 2.5rem;
     text-align: center;
-    color: #DAA520;;
+    color: #58420b;;
     margin: 10px;
-
 }
 
-.modal h3 {
-    font-family: 'Satisfy', cursive;
-    font-size: 2rem;
+.modal h3, .modalVitoria h3{
+    font-family: 'Cormorant Garamond', serif, cursive;
+    font-weight: 700;
+    font-size: 1.5rem;
     text-align: center;
-    color: #EEC900;
+    color: #af9606;
     margin: 5px;
 }
 
 .modal p {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Cormorant Garamond', serif, cursive;
+    font-weight: 700;
     padding: 0 15px;
-    color: #DAA520;
+    color: #8b6810;
 }
-
 
 .bg-modalVitoria {
     width: 100%;
@@ -159,34 +161,6 @@ li{
     left: 0;
     display: block;
     transition: 650ms;
-}
-
-.modalVitoria {
-    width: 70%;
-    background-color: #dcedec;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    margin: 100px auto 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.modalVitoria h1 {
-    font-family: 'Satisfy', cursive;
-    font-size: 2rem;
-    text-align: center;
-    color: #DAA520;
-    margin: 10px;
-
-}
-
-.modalVitoria h3 {
-    font-family: 'Satisfy', cursive;
-    font-size: 2rem;
-    text-align: center;
-    color: #EEC900;
-    margin: 5px;
 }
 
 .modalVitoria p {
