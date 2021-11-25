@@ -5,7 +5,7 @@ const palavras = [
     'platina','ouro','prata','cobre','estanho'
 ];
 
-Audio.play()
+// Audio.play()
 
 let tabuleiro = [];
 let tabuleiroVirtual = [];
