@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caça Palavras</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/styles/reset.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body>  
     <header>
@@ -25,7 +25,7 @@
             <button class="play-button" onclick="closeModal()">Jogar</button>
 
         </div>
-        <img class="pirata" src="img/pirata1.png" alt="pirata">
+        <img class="pirata" src="./assets/img/pirata1.png" alt="pirata">
     </div> 
     <div class="bg-modalVitoria" id="bgModalVitoria">
         <div class="modalVitoria" id="modalVitoria">
@@ -35,16 +35,17 @@
             <button class="jogarNovamente" onclick="closeModal()">Jogar Novamente</button>
 
         </div>
-        <img class="bau" src="img/Bau tesouro.png" alt="bau">
+        <img class="bau" src="./assets/img/Bau tesouro.png" alt="bau">
     </div> 
     <main id='main'>
         
-
+        <audio autoplay="true" controls="controls">
+            <source src="./assets/sounds/y2meta.com - Klaus Badelt - He's a Pirate (320 kbps).mp3" type="audio/mp3" />
+        </audio>
 
     </main>
 
-    <audio src="sounds/y2meta.com - Klaus Badelt - He's a Pirate (320 kbps).mp3"></audio>    
     
-    <script src="cacapalavras.js"></script>
+    <script src="./assets/javascript/cacapalavras.js"></script>
 </body>
 </html>
