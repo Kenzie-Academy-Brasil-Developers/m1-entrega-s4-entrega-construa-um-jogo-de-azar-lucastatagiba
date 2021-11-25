@@ -6,13 +6,14 @@ const palavras = [
 ];
 
 let tabuleiro = [];
+let tabuleiroVirtual = [];
 let coordenadasClick = [];
 let coordenadasPalavrasSelecionadas = [];
-let colunas = document.getElementsByTagName('tr')
-let linhas = document.getElementsByTagName('td')
-let palavra1 = []
-let palavra2 = []
-let palavra3 = []
+let colunas = document.getElementsByTagName('tr');
+let linhas = document.getElementsByTagName('td');
+let palavra1 = [];
+let palavra2 = [];
+let palavra3 = [];
 
 function closeModal() {
     document.getElementById('bgModal').style.top = '-150%'
@@ -99,10 +100,17 @@ function incluirPalavras(selecionada){
 
 let main = document.getElementById('main')
 let grade = document.createElement('table')
-main.appendChild(grade)
+
 
 let ul = document.createElement('ul')
-main.appendChild(ul)
+let ulDiv = document.createElement('div')
+let tituloACacar = document.createElement('h3')
+tituloACacar.innerText = 'Preciosidades'
+
+ulDiv.appendChild(tituloACacar)
+ulDiv.appendChild(ul)
+main.appendChild(ulDiv)
+main.appendChild(grade)
 
 
 for (let i = 0; i < 10; i++) {
@@ -158,9 +166,6 @@ function incluirPalavrasPeloDOM() {
 }
 incluirPalavrasPeloDOM()
 
-let tituloACacar = document.createElement('h3')
-tituloACacar.innerText = 'Preciosidades:'
-main.appendChild(tituloACacar)
 
 let arr = [];
 
@@ -256,7 +261,7 @@ button2.addEventListener('click', closeModalVitoria)
 function resetGame(){
     document.location.href = "index.html"
 }
-Audio.play()
+
 
 
 
