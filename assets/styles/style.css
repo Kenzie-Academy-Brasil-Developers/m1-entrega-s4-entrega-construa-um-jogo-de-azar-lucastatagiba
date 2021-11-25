@@ -1,31 +1,55 @@
-body{    
+/* FONTE */
+@import url('https://fonts.googleapis.com/css2?family=Estonia&family=IBM+Plex+Serif:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Estonia&family=IBM+Plex+Serif:ital,wght@1,700&display=swap');
+
+body{
     background-image: url(../img/fundo-fotografico-em-tecido-mapa-do-tesouro-2-60-x-1-50-painel.jpg);
     background-size: cover;
-    height: 100vw;
+}
+
+header{
+    background-color: #f5f5dcbd;
+    display: flex;
+    justify-content: space-between;
+}
+
+header audio{
+    display: none;
+    height: 20px;
 }
 
 nav{
-    background-color: #f5f5dcbd;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 20px
+}
+
+nav a{
+    font-size: 16px;
+    color: #3f2209;
 }
 
 main{
-    width: 100vw;
+    width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    align-items: center;
 }
 h2{
     width: 100%;
+    font-family: 'Estonia';
     text-align: center;
-    margin: 50px auto;
-    font-size: 50px;
+    margin: 20px auto;
+    font-size: 80px;
+    line-height: 60px;
     background-color: #f5f5dcbd;
 }
 table{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
     font-size: 30px;
+    margin: 20px 0;
     width: 100%;
-    text-align: center;    
-    margin: 100px auto;  
+    text-align: center;
     border: 1px solid black;
     background-color: #f5f5dcbd;
 }
@@ -35,22 +59,39 @@ td:hover {
     cursor: pointer; 
 }
 
-td{    
-    padding: 2%;
+td{
+    width: 10%;
+    padding: 1% 0%;
     margin-top: 10px;    
     border: 1px solid transparent;  
 }
 h3{
-    margin: 0 auto 20px; 
+    font-family: 'Estonia';
     text-align: center;    
-    font-size: 30px;
-    background-color: #f5f5dcbd;
+    font-size: 55px;
+    margin-bottom: -10px;
 }
-li{
+
+main div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #f5f5dcbd;
-    width: 115px;
-    margin: 0 auto;            
-    font-size: 15px; 
+    width: 250px;
+    border-radius: 50%;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 16px; 
 }
 .riscar{
     text-decoration: line-through;
@@ -197,12 +238,12 @@ li{
 
 @media screen and (min-width: 500px){
     table{
-        width: 500px;
-        text-align: center;    
-        margin: 100px auto;  
+        width: 40%;
+        text-align: center;
         border: 1px solid blue;     
     } 
     .modal {
+        width: 50%;
         max-width: 500px;
         background-color: #dcedec;
         border: 1px solid #000000;
@@ -213,6 +254,7 @@ li{
         text-align: center;
     }
     .modalVitoria {
+        width: 50%;
         max-width: 500px;
         background-color: #dcedec;
         border: 1px solid #000000;
@@ -226,16 +268,18 @@ li{
     .pirata{
         float: right;
         max-width: 800px;
-        width: 50%;
+        width: 30%;
     }
     
     .bau{
         float: right;
         max-width: 800px;
-        width: 50%; 
+        width: 30%; 
+    } 
+
+    header audio{
+        display: inline;
     }
-    #activate1 {
-        font-size: 30px;
-    }   
+
 }
 
